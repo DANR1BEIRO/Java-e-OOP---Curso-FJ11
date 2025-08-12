@@ -1,4 +1,4 @@
-package Exercicios;
+package Exercicios.OPERACOES_MATEMATICAS;
 
 public class Teste01 {
     public static void main(String[] args) {

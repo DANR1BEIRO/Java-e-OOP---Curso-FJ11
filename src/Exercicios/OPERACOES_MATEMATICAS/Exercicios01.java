@@ -1,4 +1,4 @@
-package Exercicios;
+package Exercicios.OPERACOES_MATEMATICAS;
 
 public class Exercicios01 {
     public static void main(String[] args) {
@@ -41,7 +41,6 @@ public class Exercicios01 {
             fatorial *= i;
             System.out.println(i + "! é " + fatorial);
         }
-
 
         // fibonacci
         int a = 0;

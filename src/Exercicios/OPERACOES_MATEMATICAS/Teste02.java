@@ -1,4 +1,4 @@
-package Exercicios;
+package Exercicios.OPERACOES_MATEMATICAS;
 
 public class Teste02 {
     static int x = 25;
