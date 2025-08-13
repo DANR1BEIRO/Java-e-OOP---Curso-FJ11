@@ -1,5 +1,7 @@
 package Banco.model.conta;
 
+import Banco.exception.SaldoInsuficienteException;
+import Banco.exception.ValorInvalidoException;
 import Banco.model.conta.tributavel.Tributavel;
 
 public class ContaCorrente extends Conta implements Tributavel {
@@ -22,12 +24,12 @@ public class ContaCorrente extends Conta implements Tributavel {
     }
 
     @Override
-    public boolean sacar(double saque) {
+    public void saca(double saque) throws SaldoInsuficienteException, ValorInvalidoException {
         double saldo = getSaldo();
         double total = saldo > 0 ? saldo + limite : limite;
         System.out.println("Total disponível: " + total);
 
-        if (saque > total) return false;
+        if (saque > total) throw new SaldoInsuficienteException("Saldo insuficiente");
 
         if (saque > saldo) {
             double usarLimite = 0;
@@ -36,23 +38,16 @@ public class ContaCorrente extends Conta implements Tributavel {
             } else {
                 usarLimite = saque;
             }
-
-            if (limite < usarLimite) {
-                throw new IllegalArgumentException("Limite excedido");
-            }
             limite -= usarLimite;
         }
         diminuirSaldo(saque);
-        return true;
     }
 
     @Override
-    public boolean transferePara(Conta destino, double valor) {
-        if (sacar(valor)) {
-            destino.depositar(valor);
-            return true;
-        }
-        return false;
+    public void transferePara(Conta destino, double valor) throws SaldoInsuficienteException, ValorInvalidoException {
+        if (destino == null) throw new IllegalArgumentException("Conta destino inválida");
+        saca(valor);
+        destino.deposita(valor);
     }
 
     @Override
@@ -65,8 +60,8 @@ public class ContaCorrente extends Conta implements Tributavel {
     }
 
     @Override
-    public void depositar(double valor) {
-        super.depositar(valor);
+    public void deposita(double valor) throws ValorInvalidoException {
+        super.deposita(valor);
     }
 
     public double getLimite() {

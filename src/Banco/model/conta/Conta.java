@@ -1,5 +1,8 @@
 package Banco.model.conta;
 
+import Banco.exception.SaldoInsuficienteException;
+import Banco.exception.ValorInvalidoException;
+
 public abstract class Conta {
     private int numero;
     private double saldo;
@@ -22,28 +25,27 @@ public abstract class Conta {
         this.saldo = saldo;
     }
 
-    protected void aumentarSaldo(double valor) {
+    protected void aumentarSaldo(double valor) throws ValorInvalidoException {
         if (valor <= 0) {
-            throw new IllegalArgumentException("Valor inválido para depósito.");
-        } else {
-            this.saldo += valor;
+            throw new ValorInvalidoException(valor);
         }
+        this.saldo += valor;
     }
 
-    protected void diminuirSaldo(double valor) {
+    protected void diminuirSaldo(double valor) throws ValorInvalidoException {
         if (valor <= 0) {
-            throw new IllegalArgumentException("Valor inválido para saque.");
+            throw new ValorInvalidoException(valor);
         }
         this.saldo -= valor;
     }
 
     public abstract void atualiza(double taxaSelic);
 
-    public abstract boolean sacar(double valor);
+    public abstract void saca(double valor) throws SaldoInsuficienteException, ValorInvalidoException;
 
-    public abstract boolean transferePara(Conta destino, double valor);
+    public abstract void transferePara(Conta destino, double valor) throws SaldoInsuficienteException, ValorInvalidoException;
 
-    public void depositar(double valor) {
+    public void deposita(double valor) throws ValorInvalidoException {
         aumentarSaldo(valor);
     }
 
