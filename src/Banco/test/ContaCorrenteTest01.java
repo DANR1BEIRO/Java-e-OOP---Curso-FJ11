@@ -1,5 +1,7 @@
 package Banco.test;
 
+import Banco.exception.SaldoInsuficienteException;
+import Banco.exception.ValorInvalidoException;
 import Banco.model.conta.Cliente;
 import Banco.model.conta.ContaCorrente;
 
@@ -12,25 +14,29 @@ public class ContaCorrenteTest01 {
         ContaCorrente contaVegeta = new ContaCorrente(2, 100);
 
         System.out.println("Saldo goku: " + contaGoku.getSaldo());
-        contaGoku.transferePara(contaVegeta, 50);
+        try {
+            contaGoku.transferePara(contaVegeta, 50);
+        } catch (SaldoInsuficienteException | ValorInvalidoException e) {
+            System.out.println(e.getMessage());
+        }
         System.out.println("Saldo vegeta: " + contaVegeta.getSaldo());
         System.out.println("Limite vegeta: " + contaVegeta.getLimite());
 
         System.out.println("Saldo goku: " + contaGoku.getSaldo());
 
-        System.out.println("Limite: " + contaGoku.getLimite());
-        System.out.println("Saque: " + contaGoku.sacar(100));
-        System.out.println("");
-        System.out.println("Saldo: " + contaGoku.getSaldo());
-        System.out.println("Limite: " + contaGoku.getLimite());
-        System.out.println("Saque: " + contaGoku.sacar(100));
-        System.out.println("");
-        System.out.println("Saldo: " + contaGoku.getSaldo());
-        System.out.println("Limite: " + contaGoku.getLimite());
-        System.out.println("Saque: " + contaGoku.sacar(5));
-        System.out.println("Saldo: " + contaGoku.getSaldo());
-        System.out.println("Limite: " + contaGoku.getLimite());
-        System.out.println("Saque: " + contaGoku.sacar(800));
+//        System.out.println("Limite: " + contaGoku.getLimite());
+//        System.out.println("Saque: " + contaGoku.saca(100));
+//        System.out.println("");
+//        System.out.println("Saldo: " + contaGoku.getSaldo());
+//        System.out.println("Limite: " + contaGoku.getLimite());
+//        System.out.println("Saque: " + contaGoku.saca(100));
+//        System.out.println("");
+//        System.out.println("Saldo: " + contaGoku.getSaldo());
+//        System.out.println("Limite: " + contaGoku.getLimite());
+//        System.out.println("Saque: " + contaGoku.saca(5));
+//        System.out.println("Saldo: " + contaGoku.getSaldo());
+//        System.out.println("Limite: " + contaGoku.getLimite());
+//        System.out.println("Saque: " + contaGoku.saca(800));
 
         System.out.println("Total de contas: " + ContaCorrente.getTotalDeContas());
     }
