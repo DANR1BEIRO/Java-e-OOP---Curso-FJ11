@@ -3,6 +3,8 @@ package Banco.model.conta;
 import Banco.exception.SaldoInsuficienteException;
 import Banco.exception.ValorInvalidoException;
 
+import java.util.Objects;
+
 public abstract class Conta {
     private int numero;
     private double saldo;
@@ -47,6 +49,26 @@ public abstract class Conta {
 
     public void deposita(double valor) throws ValorInvalidoException {
         aumentarSaldo(valor);
+    }
+
+    @Override
+    public String toString() {
+        return "Conta{" +
+                "numero=" + numero +
+                ", saldo=" + saldo +
+                ", titular=" + titular +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Conta outraConta = (Conta) obj;
+        return this.numero == outraConta.numero;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numero, saldo, titular);
     }
 
     public int getNumero() {

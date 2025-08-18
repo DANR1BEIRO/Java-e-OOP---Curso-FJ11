@@ -64,6 +64,11 @@ public class ContaCorrente extends Conta implements Tributavel {
         super.deposita(valor);
     }
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
     public double getLimite() {
         return limite;
     }
