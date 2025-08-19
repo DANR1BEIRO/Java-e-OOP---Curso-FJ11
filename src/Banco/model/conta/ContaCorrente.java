@@ -75,8 +75,6 @@ public class ContaCorrente extends Conta implements Tributavel, Comparable<Conta
 
     @Override
     public int compareTo(ContaCorrente contaCorrente) {
-        if (this.getSaldo() < contaCorrente.getSaldo()) return -1;
-        if (this.getSaldo() > contaCorrente.getSaldo()) return 1;
-        return 0;
+        return Double.compare(this.getSaldo(), contaCorrente.getSaldo());
     }
 }
