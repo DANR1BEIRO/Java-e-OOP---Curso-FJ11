@@ -4,7 +4,7 @@ import Banco.exception.SaldoInsuficienteException;
 import Banco.exception.ValorInvalidoException;
 import Banco.model.conta.tributavel.Tributavel;
 
-public class ContaCorrente extends Conta implements Tributavel {
+public class ContaCorrente extends Conta implements Tributavel, Comparable<ContaCorrente> {
     private double limite;
 
     public ContaCorrente() {
@@ -71,5 +71,12 @@ public class ContaCorrente extends Conta implements Tributavel {
 
     public double getLimite() {
         return limite;
+    }
+
+    @Override
+    public int compareTo(ContaCorrente contaCorrente) {
+        if (this.getSaldo() < contaCorrente.getSaldo()) return -1;
+        if (this.getSaldo() > contaCorrente.getSaldo()) return 1;
+        return 0;
     }
 }
