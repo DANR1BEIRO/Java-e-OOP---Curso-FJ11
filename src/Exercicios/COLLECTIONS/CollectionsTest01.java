@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ArrayListTest01 {
+public class CollectionsTest01 {
     public static void main(String[] args) {
         List<String> nomes = new ArrayList<>();
 
@@ -35,6 +35,7 @@ public class ArrayListTest01 {
         for (ContaCorrente conta : contas) {
             System.out.println(conta.getSaldo());
         }
+
         System.out.println(contas.size());
         System.out.println(contas.contains(nomes));
 
@@ -46,5 +47,4 @@ public class ArrayListTest01 {
         Collections.reverse(contas);
         System.out.println(contas);
     }
-
 }
