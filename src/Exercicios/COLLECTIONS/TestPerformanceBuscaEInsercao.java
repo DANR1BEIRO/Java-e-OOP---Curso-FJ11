@@ -1,10 +1,9 @@
 package Exercicios.COLLECTIONS;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
-public class TestPerformance01 {
+public class TestPerformanceBuscaEInsercao {
     public static void main(String[] args) {
         System.out.println("Testando...");
         Collection<Integer> test = new HashSet<>();
