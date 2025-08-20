@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class CollectionsTest01 {
+public class ListTest01 {
     public static void main(String[] args) {
         List<String> nomes = new ArrayList<>();
 
