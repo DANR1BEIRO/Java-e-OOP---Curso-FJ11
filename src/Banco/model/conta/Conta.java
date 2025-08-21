@@ -68,7 +68,7 @@ public abstract class Conta {
 
     @Override
     public int hashCode() {
-        return Objects.hash(numero, saldo, titular);
+        return Objects.hash(numero);
     }
 
     public int getNumero() {
